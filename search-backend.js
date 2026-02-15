@@ -1,6 +1,3 @@
-⁠ javascript
-#!/usr/bin/env node
-
 // This script performs the actual web search
 // It will be called by the Express server
 

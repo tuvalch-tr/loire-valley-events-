@@ -1,4 +1,3 @@
-⁠ javascript
 const CACHE_NAME = 'loire-events-v1';
 const urlsToCache = [
   '/',
