@@ -1,9 +1,13 @@
-⁠ javascript
 const express = require('express');
 const { searchLoireEvents } = require('./search-backend');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
+});
 
 // Serve static files
 app.use(express.static(__dirname));
@@ -19,6 +23,8 @@ app.get('/api/search-events', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Loire Events app running on http://localhost:${PORT}`);
+// Listen on 0.0.0.0 to accept external connections
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`✅ Loire Events app running on port ${PORT}`);
+  console.log(`Health check available at /health`);
 });
